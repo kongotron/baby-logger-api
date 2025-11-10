@@ -23,8 +23,8 @@ services:
       - DB_USERNAME=${DB_USERNAME}
       - DB_PASSWORD=${DB_PASSWORD}
     volumes:
-      - ./storage:/var/www/html/storage
-      - ./bootstrap/cache:/var/www/html/bootstrap/cache
+      - storage-data:/var/www/html/storage
+      - cache-data:/var/www/html/bootstrap/cache
     networks:
       - baby-logger-network
     depends_on:
@@ -52,4 +52,8 @@ networks:
 
 volumes:
   mysql-data:
+    driver: local
+  storage-data:
+    driver: local
+  cache-data:
     driver: local
